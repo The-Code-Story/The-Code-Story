@@ -3,8 +3,9 @@
 // pragma solidity >=0.7.0 <0.9.0;
 
 // import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
+// import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
 
-// contract Asubo is ERC721URIStorage{
+// contract Asubo is ERC721URIStorage, ReentrancyGuard{
 
 //     constructor()ERC721("CodeSensei","CODS"){
 
@@ -19,7 +20,7 @@
 //     event MintNFt(address indexed _owner,uint _level,string _tokenURI, uint _tokenID );
 
 
-//     function mintNFT(uint _level) public returns(bool){
+//     function mintNFT(uint _level) public  nonReentrant() returns(bool){
 //         tokenId++;
 //         string memory URI = tokenURIs[_level-1];
 //         _mint(msg.sender,tokenId);
@@ -35,5 +36,4 @@
 //     }
 // }
 
-
-// deployed at Ropsten Testnet at 0x08e9CADc107893c306DFA3fc77525cAFB1116935
+// deployed at Ropsten Testnet at 0xD975Bfc13f54AD4c8Ce291F5e9434374056b99c3
