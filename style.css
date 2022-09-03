@@ -1,0 +1,26 @@
+#overlapping__div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#question{
+    background-color: whitesmoke;
+    height: 20vh;
+    width: 60vw;
+}
+
+.answer{
+    background-color: aliceblue;
+    cursor: pointer;
+    border: 1px blue solid;
+    margin: 2vh;
+}
+
+.answer:hover{
+    border: 2px green solid;
+}
+
+#submit{
+    border: 2px orange solid;
+}

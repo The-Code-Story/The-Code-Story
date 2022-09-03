@@ -1,5 +1,6 @@
 const canvas = document.querySelector('canvas')
 const c = canvas.getContext('2d')
+console.log(gsap)
 
 // console.log(collisions)
 const collisionsMap = []
@@ -58,6 +59,8 @@ canvas.height = 728
 const img = new Image()
 img.src = "./img/new_map.png"
 
+const demon_img = new Image();
+demon_img.src = "./img/druid.gif"
 // console.log(img)
 const player_down_image = new Image();
 player_down_image.src = "./img/playerDown.png"
@@ -86,6 +89,20 @@ const player = new Sprite({
         right: player_right_image,
         left: player_left_image,
         down: player_down_image
+    }
+})
+
+const demon = new Sprite({
+    position: {
+        x: canvas.width /2 - 1386/6 /2,
+        y: canvas.height / 2 - 190 /2
+    },
+    image: demon_img,
+    frames: {
+        max: 1
+    },
+    sprites:{
+        up: demon_img,
     }
 })
 
@@ -120,7 +137,7 @@ const keys = {
 //     }
 // })
 
-const movables = [background, ...boundaries, ...ChallengeZones]
+const movables = [background, ...boundaries, ...ChallengeZones, demon]
 
 function rectangularCollision({rectangle1, rectangle2}){
     return(
@@ -131,8 +148,13 @@ function rectangularCollision({rectangle1, rectangle2}){
     )
 }
 
+const challenge = {
+    initiated: false
+}
+
 function animate(){
-    window.requestAnimationFrame(animate)
+    const animationId = window.requestAnimationFrame(animate)
+    console.log(animationId)
     background.draw()
     boundaries.forEach(
         (boundary) => {
@@ -141,26 +163,56 @@ function animate(){
     ChallengeZones.forEach(ChallengeZone => {
         ChallengeZone.draw()
     })
+    player.draw()
+    demon.draw()
+
+    let moving = true
+    player.moving = false
+
+    if(challenge.initiated) return
+
     if (keys.w.pressed || keys.a.pressed ||  keys.s.pressed || keys.d.pressed){
         for( let i = 0; i < ChallengeZones.length; i++){
-            const ChallenegeZone = ChallengeZones[i]
+            const ChallengeZone = ChallengeZones[i]
+            const overlappingArea = (Math.min(player.position.x + player.width, ChallengeZone.position.x + ChallengeZone.width )
+             - 
+             Math.max(player.position.x, ChallengeZone.position.x ))
+             * 
+             (Math.min(player.position.y + player.height, ChallengeZone.position.y + ChallengeZone.height) 
+             - 
+             Math.max(player.position.y, ChallengeZone.position.y))
             if (
                 rectangularCollision({
                     rectangle1: player,
-                    rectangle2: ChallenegeZone
+                    rectangle2: ChallengeZone
                     }
-                )
+                ) && (overlappingArea > (player.width * player.height)/2 &&
+                Math.random() < 0.1)
             )  {
                 console.log("Entered the challenge area")
-                  // moving = false
+                window.cancelAnimationFrame(animationId)
+                challenge.initiated = true
+                gsap.to('#overlapping_div', {
+                    opacity:1,
+                    repeat: 3,
+                    yoyo: true,
+                    duration: 0.4,
+                    onComplete(){
+                        gsap.to('#overlapping_div', {
+                            opacity: 1,
+                            duration: 0.4
+                        })
+                        animateChallenge()
+                    }
+                 })
+                
                 break
             }
         }
 
     }
-    player.draw()
-   let moving = true
-   player.moving = false
+    
+
     if (keys.w.pressed && lastKey==="w"){
         player.image = player.sprites.up
         player.moving = true
@@ -279,6 +331,11 @@ function animate(){
 }   
 // img.onload("heyyyyy  ")
 animate()
+
+function animateChallenge(){
+    window.requestAnimationFrame(animateChallenge)
+    console.log("animation challenge ")
+}
 
 let lastKey = ''
 window.addEventListener('keydown', (e)=>{
