@@ -154,7 +154,7 @@ const challenge = {
 
 function animate(){
     const animationId = window.requestAnimationFrame(animate)
-    console.log(animationId)
+    // console.log(animationId)
     background.draw()
     boundaries.forEach(
         (boundary) => {
@@ -189,6 +189,11 @@ function animate(){
                 ) && (overlappingArea > (player.width * player.height)/2 &&
                 Math.random() < 0.1)
             )  {
+                if(localStorage.getItem('isClaimed'))
+                {
+                    window.alert("You've already completed the game")
+                    window.location.reload();
+            }
                 console.log("Entered the challenge area")
                 window.cancelAnimationFrame(animationId)
                 challenge.initiated = true
@@ -206,7 +211,7 @@ function animate(){
                     }
                  })
                 
-                break
+                // break
             }
         }
 
@@ -225,7 +230,7 @@ function animate(){
                         ...boundary,
                         position: {
                             x: boundary.position.x,
-                            y: boundary.position.y + 3
+                            y: boundary.position.y + 6
                         }
                     }
                 })
@@ -242,8 +247,8 @@ function animate(){
             movable.position.y += 3;
         })
         
-        // background.position.y = background.position.y + 3
-        // testBoundary.position.y = background.position.y + 3
+        // background.position.y = background.position.y + 6
+        // testBoundary.position.y = background.position.y + 6
     }
 
     
@@ -258,7 +263,7 @@ function animate(){
                     rectangle2: {
                         ...boundary,
                         position: {
-                            x: boundary.position.x + 3,
+                            x: boundary.position.x + 6,
                             y: boundary.position.y
                         }
                     }
