@@ -59,8 +59,8 @@ canvas.height = 728
 const img = new Image()
 img.src = "./img/new_map.png"
 
-const demon_img = new Image();
-demon_img.src = "./img/druid.gif"
+// const demon_img = new Image();
+// demon_img.src = "./img/druid.gif"
 // console.log(img)
 const player_down_image = new Image();
 player_down_image.src = "./img/playerDown.png"
@@ -92,19 +92,19 @@ const player = new Sprite({
     }
 })
 
-const demon = new Sprite({
-    position: {
-        x: canvas.width /2 - 1386/6 /2,
-        y: canvas.height / 2 - 190 /2
-    },
-    image: demon_img,
-    frames: {
-        max: 1
-    },
-    sprites:{
-        up: demon_img,
-    }
-})
+// const demon = new Sprite({
+//     position: {
+//         x: canvas.width /2 - 1386/6 /2,
+//         y: canvas.height / 2 - 190 /2
+//     },
+//     image: demon_img,
+//     frames: {
+//         max: 1
+//     },
+//     sprites:{
+//         up: demon_img,
+//     }
+// })
 
 const background = new Sprite({
     position: {
@@ -137,7 +137,7 @@ const keys = {
 //     }
 // })
 
-const movables = [background, ...boundaries, ...ChallengeZones, demon]
+const movables = [background, ...boundaries, ...ChallengeZones]
 
 function rectangularCollision({rectangle1, rectangle2}){
     return(
@@ -164,7 +164,7 @@ function animate(){
         ChallengeZone.draw()
     })
     player.draw()
-    demon.draw()
+    // demon.draw()
 
     let moving = true
     player.moving = false
