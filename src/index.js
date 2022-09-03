@@ -1,7 +1,7 @@
 import ropsten from "./Web3.js";
 import abi from "./abi/abi.json" assert { type: "json" };
 
-// contract CodeSensei.sol deployed at Ropsten Testnet at 0x58fc808c7417634F99bD5F656DC39344c4aB730c
+// contract CodeSensei.sol deployed at Ropsten Testnet at 0x08e9CADc107893c306DFA3fc77525cAFB1116935
 
 // const button = document.querySelector("#mint");
 // button.addEventListener("click", mintNFT);
@@ -15,7 +15,7 @@ import abi from "./abi/abi.json" assert { type: "json" };
 //   let web3 = new Web3(window.ethereum);
 //   let contract = new web3.eth.Contract(
 //     abi,
-//     "0x58fc808c7417634F99bD5F656DC39344c4aB730c"
+//     "0x08e9CADc107893c306DFA3fc77525cAFB1116935"
 //   );
 
 //   web3.eth.requestAccounts().then((accounts) => {

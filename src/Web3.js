@@ -9,7 +9,7 @@ const ropsten = new Promise((res, rej) => {
     let web3 = new Web3(window.ethereum);
     let contract = new web3.eth.Contract(
       abi,
-      "0x58fc808c7417634F99bD5F656DC39344c4aB730c"
+      "0x08e9CADc107893c306DFA3fc77525cAFB1116935"
     );
 
     let accounts = await web3.eth.requestAccounts();
