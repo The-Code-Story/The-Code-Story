@@ -57,7 +57,7 @@ canvas.width = 1520
 canvas.height = 728
 
 const img = new Image()
-img.src = "./img/map_with_npc.png"
+img.src = "./img/map_with_npc3.png"
 
 // const demon_img = new Image();
 // demon_img.src = "./img/druid.gif"
@@ -199,7 +199,6 @@ function animate(){
                 challenge.initiated = true
                 gsap.to('#overlapping_div', {
                     opacity:1,
-                    repeat: 3,
                     yoyo: true,
                     duration: 0.4,
                     onComplete(){
@@ -244,7 +243,7 @@ function animate(){
         
         if (moving)
         movables.forEach((movable) => {
-            movable.position.y += 3;
+            movable.position.y += 6;
         })
         
         // background.position.y = background.position.y + 6
@@ -276,7 +275,7 @@ function animate(){
         }
         if (moving)
         movables.forEach((movable) => {
-            movable.position.x += 3;
+            movable.position.x += 6;
         })
     }
     else if (keys.s.pressed && lastKey=="s"){
@@ -291,7 +290,7 @@ function animate(){
                         ...boundary,
                         position: {
                             x: boundary.position.x,
-                            y: boundary.position.y - 3
+                            y: boundary.position.y - 6
                         }
                     }
                 })
@@ -303,7 +302,7 @@ function animate(){
         }
         if (moving)
         movables.forEach((movable) => {
-            movable.position.y -= 3;
+            movable.position.y -= 6;
         })
     }
     else if (keys.d.pressed && lastKey=="d"){
@@ -317,7 +316,7 @@ function animate(){
                     rectangle2: {
                         ...boundary,
                         position: {
-                            x: boundary.position.x - 3,
+                            x: boundary.position.x - 6,
                             y: boundary.position.y
                         }
                     }
@@ -330,7 +329,7 @@ function animate(){
         }
         if (moving)
         movables.forEach((movable) => {
-            movable.position.x -= 3;
+            movable.position.x -= 6;
         })
     }
 }   
