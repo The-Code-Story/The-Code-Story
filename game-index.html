@@ -42,12 +42,18 @@
     <div id="question">What Do you mean by HTML</div>
     <div class="answerss">
       <div>
-        <div class="answer" id="answer1" onclick="fun1()">Chutiya</div>
-        <div class="answer" id="answer2" onclick="fun2()">Bakchod</div>
+        <div class="answer" id="answer1" onclick="fun1()">
+          HighText Machine Language
+        </div>
+        <div class="answer" id="answer2" onclick="fun2()">
+          HyperText and links Markup Language
+        </div>
       </div>
       <div>
-        <div class="answer" id="answer3" onclick="fun3()">Haiwaan</div>
-        <div class="answer" id="answer4" onclick="fun4()">BKB</div>
+        <div class="answer" id="answer3" onclick="fun3()">
+          HyperText Markup Language
+        </div>
+        <div class="answer" id="answer4" onclick="fun4()">None of these</div>
       </div>
     </div>
 
@@ -58,11 +64,11 @@
 </div>
 <script src="./src/index.js" type="module"></script>
 <script src="https://unpkg.com/web3@latest/dist/web3.min.js"></script>
-<script
+<!-- <script
   src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
   integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
   crossorigin="anonymous"
-></script>
+></script> -->
 <script
   src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.0/gsap.min.js"
   integrity="sha512-GQ5/eIhs41UXpG6fGo4xQBpwSEj9RrBvMuKyE2h/2vw3a9x85T1Bt0JglOUVJJLeyIUl/S/kCdDXlE/n7zCjIg=="
@@ -82,7 +88,7 @@
   var correctAnswers = [
     "HyperText Markup Language",
     "HTML, Head, Title, Body",
-    "<a href = 'www.codesensie.com'> CodeSensie.Com </a>",
+    "&lt;a href = 'www.codesensie.com'&gt; CodeSensie.Com &lt;/a&gt;",
     "style",
     "text-transform : capitalize;",
     ":after",
@@ -125,6 +131,7 @@
   function claimnft() {
     if (isselected) {
       if (correctAnswers.includes(markedAnswer)) {
+        document.getElementById("overlapping_div").style.top = "100vh";
         isClaimed = true;
         window.alert(
           "You've Completed The Game and recieved the nft on completion"
@@ -213,16 +220,16 @@
     Question3: {
       Question: "How to create a hyperlink in HTML?",
       options: [
-        "<a href = 'www.codesensie.com'> CodeSensie.Com </a>",
-        "<a url = 'www.javatpoint.com' CodeSensie.com /a>",
-        "<a link = 'www.codesensie.com'> codesensie.com </a>",
-        "<a> www.codesensie.com <CodeSensie.com /a>",
+        "&lt;a href = 'www.codesensie.com'&gt; CodeSensie.Com &lt;/a&gt;",
+        "&lt;a url = 'www.codesensie.com' CodeSensie.com /a&gt;",
+        "&lt;a link = 'www.codesensie.com'&gt; codesensie.com &lt;/a&gt;",
+        "&lt;a&gt; www.codesensie.com &lt;CodeSensie.com /a&gt;",
       ],
       correct: "<a href = 'www.codesensie.com'> CodeSensie.Com </a>",
     },
     Question4: {
       Question: "The HTML attribute used to define the inline styling is -",
-      options: ["<style>", "style", "<link>", "<script>"],
+      options: ["&lt;style&gt;", "style", "&lt;link&gt;", "&lt;script&gt;"],
       correct: "style",
     },
     Question5: {
