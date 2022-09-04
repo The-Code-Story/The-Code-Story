@@ -1,0 +1,42 @@
+{
+    "Question1": { "Question":"What Do you mean by HTML",
+    "options":["HighText Machine Language","HyperText and links Markup Language","HyperText Markup Language","None of these"],
+    "correct":"HyperText Markup Language"
+},
+    "Question2": { "Question":"The correct sequence of HTML tags for starting a webpage is -",
+    "options":["Head, Title, HTML, body","HTML, Body, Title, Head","HTML, Head, Title, Body","HTML, Head, Title, Body"],
+    "correct":"HTML, Head, Title, Body"
+},
+    "Question3": { "Question":"How to create a hyperlink in HTML?",
+    "options":["<a href = 'www.codesensie.com'> CodeSensie.Com </a>","<a url = 'www.javatpoint.com' CodeSensie.com /a>","<a link = 'www.codesensie.com'> codesensie.com </a>","<a> www.codesensie.com <CodeSensie.com /a>"],
+    "correct":"<a href = 'www.codesensie.com'> CodeSensie.Com </a>"
+},
+    "Question4": { "Question":"The HTML attribute used to define the inline styling is -",
+    "options":["<style>","style","<link>","<script>"],
+    "correct":"style"
+},
+    "Question5": { "Question":"Which of the following syntax is correct in CSS to make each word of a sentence start with a capital letter?",
+    "options":["text-style : capital;","transform : capitalize;","text-transform : capital;","text-transform : capitalize;"],
+    "correct":"text-transform : capitalize;"
+},
+    "Question6": { "Question":"Which of the following is not a pseudo class?",
+    "options":[":after",":first-child",":active",":lang"],
+    "correct":":after"
+    },
+    "Question7": { "Question":"Which type of JavaScript language is ___.",
+    "options":["Object - oriented","Object - based","Assembly-language","High-level"],
+    "correct":"Object - based"
+    },
+    "Question8": { "Question":"The 'function' and 'var' are known as:",
+    "options":["Keywords","Data types","Declaration statements","Prototypes"],
+    "correct":"Declaration statements"
+},
+    "Question9": { "Question":"Backend development comprises _____.",
+    "options":["The user interface, API and database","The API, MySQL and the server","MySQl, HHTP and the API","The API, the database and a server to house it all"],
+    "correct":"The API, the database and a server to house it all"
+},
+    "Question10": { "Question":"The Application programming interfaces (API)",
+    "options":["Is part of the user interface through which the database makes user requests","Is part of the backend development through which users' requests access the database","Is part of the frontend development responsible for user programming","Serves as the programming component responsible for the user interface and the database"],
+    "correct":"Is part of the backend development through which users' requests access the database"
+}
+}

@@ -1,0 +1,526 @@
+<style>
+  body {
+    margin: 0px;
+    padding: 0px;
+  }
+</style>
+<!-- CSS only -->
+<link rel="stylesheet" href="style.css" />
+<!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous"> -->
+<!-- JavaScript Bundle with Popper -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+  rel="stylesheet"
+/>
+<div style="display: flex; justify-content: center; align-items: center">
+  <div
+    id="nftClaimed"
+    style="
+      background-color: rgb(10, 10, 10);
+      width: 100vw;
+      height: 100vh;
+      position: absolute;
+      opacity: 0;
+      color: white;
+    "
+  >
+    You've Already Completed The Game and got the nft
+  </div>
+  <div
+    id="overlapping_div"
+    style="
+      background-color: rgb(10, 10, 10);
+      width: 100vw;
+      height: 100vh;
+      position: absolute;
+      opacity: 0;
+      color: white;
+    "
+  >
+    <div id="question">What Do you mean by HTML</div>
+    <div class="answerss">
+      <div>
+        <div class="answer" id="answer1" onclick="fun1()">
+          HighText Machine Language
+        </div>
+        <div class="answer" id="answer2" onclick="fun2()">
+          HyperText and links Markup Language
+        </div>
+      </div>
+      <div>
+        <div class="answer" id="answer3" onclick="fun3()">
+          HyperText Markup Language
+        </div>
+        <div class="answer" id="answer4" onclick="fun4()">None of these</div>
+      </div>
+    </div>
+
+    <div id="submit" onclick="func()">Submit</div>
+    <div id="mint" onclick="claimnft()">Claim NFT</div>
+  </div>
+  <canvas style="width: 100vw; height: 100vh"></canvas>
+</div>
+<script src="./src/index.js" type="module"></script>
+<script src="https://unpkg.com/web3@latest/dist/web3.min.js"></script>
+<!-- <script
+  src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+  crossorigin="anonymous"
+></script> -->
+<script
+  src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.0/gsap.min.js"
+  integrity="sha512-GQ5/eIhs41UXpG6fGo4xQBpwSEj9RrBvMuKyE2h/2vw3a9x85T1Bt0JglOUVJJLeyIUl/S/kCdDXlE/n7zCjIg=="
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer"
+></script>
+<script src="./data/collision.js"></script>
+<script src="./data/challenge.js"></script>
+<script src="classes.js"></script>
+<script src="game-index.js"></script>
+<script>
+  console.log("Count is -------------------");
+  count = localStorage.getItem("Count");
+  var isselected = false;
+  var isClaimed = false;
+  var markedAnswer;
+  var correctAnswers = [
+    "HyperText Markup Language",
+    "HTML, Head, Title, Body",
+    "&lt;a href = 'www.codesensie.com'&gt; CodeSensie.Com &lt;/a&gt;",
+    "style",
+    "text-transform : capitalize;",
+    ":after",
+    "Object - based",
+    "Declaration statements",
+    "The API, the database and a server to house it all",
+    "Is part of the backend development through which users' requests access the database",
+  ];
+  // document.getElementById('nftClaimed').hidden=true
+  // if(localStorage.getItem("isClaimed"))
+  // {
+  //     document.getElementById('overlapping_div').hidden=true
+  //     document.getElementById('nftClaimed').hidden=false
+  //     window.alert("You've already completed the game")
+  // }
+  if (!count) {
+    localStorage.setItem("Count", 1);
+  }
+  if (count < 10) {
+    document.getElementById("mint").hidden = true;
+  } else if (count == 10) {
+    document.getElementById("mint").hidden = false;
+  }
+  console.log(count);
+  function func() {
+    if (isselected) {
+      if (correctAnswers.includes(markedAnswer)) {
+        var count;
+        count = localStorage.getItem("Count");
+        count++;
+        localStorage.setItem("Count", count);
+      } else {
+        window.alert("Your answer is wrong");
+      }
+      window.location.reload();
+    } else {
+      window.alert("Select a option first");
+    }
+  }
+  function claimnft() {
+    if (isselected) {
+      if (correctAnswers.includes(markedAnswer)) {
+        document.getElementById("overlapping_div").style.top = "100vh";
+        isClaimed = true;
+        window.alert(
+          "You've Completed The Game and recieved the nft on completion"
+        );
+        localStorage.setItem("isClaimed", true);
+      } else {
+        window.alert("Your answer is wrong");
+      }
+      setTimeout(() => {
+        window.location.reload();
+      }, 5000);
+    } else {
+      window.alert("Select a option first");
+    }
+  }
+  function fun1(e) {
+    document.getElementById("answer1").style.background = "green";
+    document.getElementById("answer1").style.color = "white";
+    document.getElementById("answer2").style.background = "white";
+    document.getElementById("answer2").style.color = "black";
+    document.getElementById("answer3").style.background = "white";
+    document.getElementById("answer3").style.color = "black";
+    document.getElementById("answer4").style.background = "white";
+    document.getElementById("answer4").style.color = "black";
+    isselected = true;
+    markedAnswer = document.getElementById("answer1").getAttribute("name");
+  }
+  function fun2() {
+    document.getElementById("answer2").style.background = "green";
+    document.getElementById("answer2").style.color = "white";
+    document.getElementById("answer1").style.background = "white";
+    document.getElementById("answer1").style.color = "black";
+    document.getElementById("answer3").style.background = "white";
+    document.getElementById("answer3").style.color = "black";
+    document.getElementById("answer4").style.background = "white";
+    document.getElementById("answer4").style.color = "black";
+    isselected = true;
+    markedAnswer = document.getElementById("answer2").getAttribute("name");
+  }
+  function fun3() {
+    document.getElementById("answer3").style.background = "green";
+    document.getElementById("answer3").style.color = "white";
+    document.getElementById("answer2").style.background = "white";
+    document.getElementById("answer2").style.color = "black";
+    document.getElementById("answer1").style.background = "white";
+    document.getElementById("answer1").style.color = "black";
+    document.getElementById("answer4").style.background = "white";
+    document.getElementById("answer4").style.color = "black";
+    isselected = true;
+    markedAnswer = document.getElementById("answer3").getAttribute("name");
+  }
+  function fun4() {
+    document.getElementById("answer4").style.background = "green";
+    document.getElementById("answer4").style.color = "white";
+    document.getElementById("answer2").style.background = "white";
+    document.getElementById("answer2").style.color = "black";
+    document.getElementById("answer3").style.background = "white";
+    document.getElementById("answer3").style.color = "black";
+    document.getElementById("answer1").style.background = "white";
+    document.getElementById("answer1").style.color = "black";
+    isselected = true;
+    markedAnswer = document.getElementById("answer4").getAttribute("name");
+  }
+
+  let questions = {
+    Question1: {
+      Question: "What Do you mean by HTML",
+      options: [
+        "HighText Machine Language",
+        "HyperText and links Markup Language",
+        "HyperText Markup Language",
+        "None of these",
+      ],
+      correct: "HyperText Markup Language",
+    },
+    Question2: {
+      Question: "The correct sequence of HTML tags for starting a webpage is -",
+      options: [
+        "Head, Title, HTML, body",
+        "HTML, Body, Title, Head",
+        "HTML, Head, Title, Body",
+        "HTML, Head, Title, Body",
+      ],
+      correct: "HTML, Head, Title, Body",
+    },
+    Question3: {
+      Question: "How to create a hyperlink in HTML?",
+      options: [
+        "&lt;a href = 'www.codesensie.com'&gt; CodeSensie.Com &lt;/a&gt;",
+        "&lt;a url = 'www.codesensie.com' CodeSensie.com /a&gt;",
+        "&lt;a link = 'www.codesensie.com'&gt; codesensie.com &lt;/a&gt;",
+        "&lt;a&gt; www.codesensie.com &lt;CodeSensie.com /a&gt;",
+      ],
+      correct: "<a href = 'www.codesensie.com'> CodeSensie.Com </a>",
+    },
+    Question4: {
+      Question: "The HTML attribute used to define the inline styling is -",
+      options: ["&lt;style&gt;", "style", "&lt;link&gt;", "&lt;script&gt;"],
+      correct: "style",
+    },
+    Question5: {
+      Question:
+        "Which of the following syntax is correct in CSS to make each word of a sentence start with a capital letter?",
+      options: [
+        "text-style : capital;",
+        "transform : capitalize;",
+        "text-transform : capital;",
+        "text-transform : capitalize;",
+      ],
+      correct: "text-transform : capitalize;",
+    },
+    Question6: {
+      Question: "Which of the following is not a pseudo class?",
+      options: [":after", ":first-child", ":active", ":lang"],
+      correct: ":after",
+    },
+    Question7: {
+      Question: "Which type of JavaScript language is ___.",
+      options: [
+        "Object - oriented",
+        "Object - based",
+        "Assembly-language",
+        "High-level",
+      ],
+      correct: "Object - based",
+    },
+    Question8: {
+      Question: "The 'function' and 'var' are known as:",
+      options: [
+        "Keywords",
+        "Data types",
+        "Declaration statements",
+        "Prototypes",
+      ],
+      correct: "Declaration statements",
+    },
+    Question9: {
+      Question: "Backend development comprises _____.",
+      options: [
+        "The user interface, API and database",
+        "The API, MySQL and the server",
+        "MySQl, HHTP and the API",
+        "The API, the database and a server to house it all",
+      ],
+      correct: "The API, the database and a server to house it all",
+    },
+    Question10: {
+      Question: "The Application programming interfaces (API)",
+      options: [
+        "Is part of the user interface through which the database makes user requests",
+        "Is part of the backend development through which users' requests access the database",
+        "Is part of the frontend development responsible for user programming",
+        "Serves as the programming component responsible for the user interface and the database",
+      ],
+      correct:
+        "Is part of the backend development through which users' requests access the database",
+    },
+  };
+
+  if (localStorage.getItem("Count") == 1) {
+    document.getElementById("question").innerHTML =
+      questions.Question1.Question;
+    document.getElementById("answer1").innerHTML =
+      questions.Question1.options[0];
+    document
+      .getElementById("answer1")
+      .setAttribute("name", questions.Question1.options[0]);
+    document.getElementById("answer2").innerHTML =
+      questions.Question1.options[1];
+    document
+      .getElementById("answer2")
+      .setAttribute("name", questions.Question1.options[1]);
+    document.getElementById("answer3").innerHTML =
+      questions.Question1.options[2];
+    document
+      .getElementById("answer3")
+      .setAttribute("name", questions.Question1.options[2]);
+    document.getElementById("answer4").innerHTML =
+      questions.Question1.options[3];
+    document
+      .getElementById("answer4")
+      .setAttribute("name", questions.Question1.options[3]);
+  } else if (localStorage.getItem("Count") == 2) {
+    document.getElementById("question").innerHTML =
+      questions.Question2.Question;
+    document.getElementById("answer1").innerHTML =
+      questions.Question2.options[0];
+    document
+      .getElementById("answer1")
+      .setAttribute("name", questions.Question2.options[0]);
+    document.getElementById("answer2").innerHTML =
+      questions.Question2.options[1];
+    document
+      .getElementById("answer2")
+      .setAttribute("name", questions.Question2.options[1]);
+    document.getElementById("answer3").innerHTML =
+      questions.Question2.options[2];
+    document
+      .getElementById("answer3")
+      .setAttribute("name", questions.Question2.options[2]);
+    document.getElementById("answer4").innerHTML =
+      questions.Question2.options[3];
+    document
+      .getElementById("answer4")
+      .setAttribute("name", questions.Question2.options[3]);
+  } else if (localStorage.getItem("Count") == 3) {
+    document.getElementById("question").innerHTML =
+      questions.Question3.Question;
+    document.getElementById("answer1").innerHTML =
+      questions.Question3.options[0];
+    document
+      .getElementById("answer1")
+      .setAttribute("name", questions.Question3.options[0]);
+    document.getElementById("answer2").innerHTML =
+      questions.Question3.options[1];
+    document
+      .getElementById("answer2")
+      .setAttribute("name", questions.Question3.options[1]);
+    document.getElementById("answer3").innerHTML =
+      questions.Question3.options[2];
+    document
+      .getElementById("answer3")
+      .setAttribute("name", questions.Question3.options[2]);
+    document.getElementById("answer4").innerHTML =
+      questions.Question3.options[3];
+    document
+      .getElementById("answer4")
+      .setAttribute("name", questions.Question3.options[3]);
+  } else if (localStorage.getItem("Count") == 4) {
+    document.getElementById("question").innerHTML =
+      questions.Question4.Question;
+    document.getElementById("answer1").innerHTML =
+      questions.Question4.options[0];
+    document
+      .getElementById("answer1")
+      .setAttribute("name", questions.Question4.options[0]);
+    document.getElementById("answer2").innerHTML =
+      questions.Question4.options[1];
+    document
+      .getElementById("answer2")
+      .setAttribute("name", questions.Question4.options[1]);
+    document.getElementById("answer3").innerHTML =
+      questions.Question4.options[2];
+    document
+      .getElementById("answer3")
+      .setAttribute("name", questions.Question4.options[2]);
+    document.getElementById("answer4").innerHTML =
+      questions.Question4.options[3];
+    document
+      .getElementById("answer4")
+      .setAttribute("name", questions.Question4.options[3]);
+  } else if (localStorage.getItem("Count") == 5) {
+    document.getElementById("question").innerHTML =
+      questions.Question5.Question;
+    document.getElementById("answer1").innerHTML =
+      questions.Question5.options[0];
+    document
+      .getElementById("answer1")
+      .setAttribute("name", questions.Question5.options[0]);
+    document.getElementById("answer2").innerHTML =
+      questions.Question5.options[1];
+    document
+      .getElementById("answer2")
+      .setAttribute("name", questions.Question5.options[1]);
+    document.getElementById("answer3").innerHTML =
+      questions.Question5.options[2];
+    document
+      .getElementById("answer3")
+      .setAttribute("name", questions.Question5.options[2]);
+    document.getElementById("answer4").innerHTML =
+      questions.Question5.options[3];
+    document
+      .getElementById("answer4")
+      .setAttribute("name", questions.Question5.options[3]);
+  } else if (localStorage.getItem("Count") == 6) {
+    document.getElementById("question").innerHTML =
+      questions.Question6.Question;
+    document.getElementById("answer1").innerHTML =
+      questions.Question6.options[0];
+    document
+      .getElementById("answer1")
+      .setAttribute("name", questions.Question6.options[0]);
+    document.getElementById("answer2").innerHTML =
+      questions.Question6.options[1];
+    document
+      .getElementById("answer2")
+      .setAttribute("name", questions.Question6.options[1]);
+    document.getElementById("answer3").innerHTML =
+      questions.Question6.options[2];
+    document
+      .getElementById("answer3")
+      .setAttribute("name", questions.Question6.options[2]);
+    document.getElementById("answer4").innerHTML =
+      questions.Question6.options[3];
+    document
+      .getElementById("answer4")
+      .setAttribute("name", questions.Question6.options[3]);
+  } else if (localStorage.getItem("Count") == 7) {
+    document.getElementById("question").innerHTML =
+      questions.Question7.Question;
+    document.getElementById("answer1").innerHTML =
+      questions.Question7.options[0];
+    document
+      .getElementById("answer1")
+      .setAttribute("name", questions.Question7.options[0]);
+    document.getElementById("answer2").innerHTML =
+      questions.Question7.options[1];
+    document
+      .getElementById("answer2")
+      .setAttribute("name", questions.Question7.options[1]);
+    document.getElementById("answer3").innerHTML =
+      questions.Question7.options[2];
+    document
+      .getElementById("answer3")
+      .setAttribute("name", questions.Question7.options[2]);
+    document.getElementById("answer4").innerHTML =
+      questions.Question7.options[3];
+    document
+      .getElementById("answer4")
+      .setAttribute("name", questions.Question7.options[3]);
+  } else if (localStorage.getItem("Count") == 8) {
+    document.getElementById("question").innerHTML =
+      questions.Question8.Question;
+    document.getElementById("answer1").innerHTML =
+      questions.Question8.options[0];
+    document
+      .getElementById("answer1")
+      .setAttribute("name", questions.Question8.options[0]);
+    document.getElementById("answer2").innerHTML =
+      questions.Question8.options[1];
+    document
+      .getElementById("answer2")
+      .setAttribute("name", questions.Question8.options[1]);
+    document.getElementById("answer3").innerHTML =
+      questions.Question8.options[2];
+    document
+      .getElementById("answer3")
+      .setAttribute("name", questions.Question8.options[2]);
+    document.getElementById("answer4").innerHTML =
+      questions.Question8.options[3];
+    document
+      .getElementById("answer4")
+      .setAttribute("name", questions.Question8.options[3]);
+  } else if (localStorage.getItem("Count") == 9) {
+    document.getElementById("question").innerHTML =
+      questions.Question9.Question;
+    document.getElementById("answer1").innerHTML =
+      questions.Question9.options[0];
+    document
+      .getElementById("answer1")
+      .setAttribute("name", questions.Question9.options[0]);
+    document.getElementById("answer2").innerHTML =
+      questions.Question9.options[1];
+    document
+      .getElementById("answer2")
+      .setAttribute("name", questions.Question9.options[1]);
+    document.getElementById("answer3").innerHTML =
+      questions.Question9.options[2];
+    document
+      .getElementById("answer3")
+      .setAttribute("name", questions.Question9.options[2]);
+    document.getElementById("answer4").innerHTML =
+      questions.Question9.options[3];
+    document
+      .getElementById("answer4")
+      .setAttribute("name", questions.Question9.options[3]);
+  } else if (localStorage.getItem("Count") == 10) {
+    document.getElementById("question").innerHTML =
+      questions.Question10.Question;
+    document.getElementById("answer1").innerHTML =
+      questions.Question10.options[0];
+    document
+      .getElementById("answer1")
+      .setAttribute("name", questions.Question10.options[0]);
+    document.getElementById("answer2").innerHTML =
+      questions.Question10.options[1];
+    document
+      .getElementById("answer2")
+      .setAttribute("name", questions.Question10.options[1]);
+    document.getElementById("answer3").innerHTML =
+      questions.Question10.options[2];
+    document
+      .getElementById("answer3")
+      .setAttribute("name", questions.Question10.options[2]);
+    document.getElementById("answer4").innerHTML =
+      questions.Question10.options[3];
+    document
+      .getElementById("answer4")
+      .setAttribute("name", questions.Question10.options[4]);
+    document.getElementById("submit").hidden = true;
+  }
+</script>

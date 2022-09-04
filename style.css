@@ -1,0 +1,65 @@
+body{
+    background: rgb(10, 10, 10);
+}
+
+/* #overlapping_div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+} */
+
+.answerss{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+#question{
+    /* background-color: whitesmoke; */
+    margin-top: 10vh;
+    margin-bottom: 5vh;
+    width: 100vw;
+    font-family: poppins;
+    font-size: x-large;
+    text-align: center;
+}
+
+.answer{
+    background-color: aliceblue;
+    cursor: pointer;
+    padding: 2vh;
+    width: 80%;
+    text-align: center;
+    /* border: 1px blue solid; */
+    margin: 2vh;
+    font-family: poppins;
+    border-radius: 12px;
+    color:black;
+    border: 2px solid rgb(10, 10, 10);
+    min-width: 40vw;
+}
+
+.answer:hover{
+    border: 2px green solid;
+}
+
+#submit{
+    border: 2px orange solid;
+    padding: 2vh;
+    border-radius: 12px;
+    width: 40%;
+    margin: 0px auto;
+    margin-top: 3vh;
+    text-align: center;
+}
+
+#mint{
+    border: 2px white solid;
+    padding: 2vh;
+    border-radius: 12px;
+    width: 40%;
+    margin: 0px auto;
+    margin-top: 3vh;
+    text-align: center;
+}
