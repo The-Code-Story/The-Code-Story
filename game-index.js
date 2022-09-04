@@ -57,7 +57,7 @@ canvas.width = 1520
 canvas.height = 728
 
 const img = new Image()
-img.src = "./img/new_map.png"
+img.src = "./img/map_with_npc.png"
 
 // const demon_img = new Image();
 // demon_img.src = "./img/druid.gif"
