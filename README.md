@@ -2,6 +2,8 @@
 <p align="center">Code Sensie is a learning game with involvement of NFT's. The player spawns in the map and moves around to find various NPCs which in term are called battlegrounds which are spread through out a map. Player has to find all the NPC's for the level and when the player finds the NPCs it has to answer a question in each battleground until he correctly answers all 10 questions to go to the next level and claim the NFT</p>
 
 ## Technologies and Tools We Used
+* Polygon Blockchain is used
+* Metamask Wallet
 * Tiled for production of map and bounding layers
 * Player and NPCs assets from itch.io
 
