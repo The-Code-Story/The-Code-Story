@@ -27,8 +27,11 @@ Run With Live Server
 ![Live Server Demo](https://i.ibb.co/ph36hQJ/Screenshot-123.png)
 
 ## How To Play
+### User Must Have Installed Metamask Extension
 Player moves around with W,A,S,D keys and has to find NPCs on the battleground, Then He has to answer a question for each npc he encounter. When all the ten questions are successfully answered he would be able to claim the NFT for clearing the level.
-
+<br/>
+<br/>
+![How To Play](https://i.ibb.co/HTSjGrg/Screenshot-125.png)
 ## Contributors
 - Suraj Mishra
   - [LinkedIn](https://www.linkedin.com/in/suraj-mishra07/)
